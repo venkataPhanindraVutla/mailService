@@ -7,7 +7,7 @@ This microservice is responsible for sending emails and logging email transactio
 1.  **Clone the repository:**
 
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/venkataPhanindraVutla/mailService
     cd mailService
     ```
 
