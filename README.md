@@ -49,9 +49,9 @@ The application consists of two main parts: the FastAPI web server and the Rabbi
 
     ```bash
     uvicorn main:app --reload
-    ```
+```
 
-    The API documentation will be available at `http://127.0.0.1:8000/docs`.
+    The API documentation will be available at `http://127.0.0.1:8002/docs`.
 
 2.  **Start the RabbitMQ consumer worker:**
 
