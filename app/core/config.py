@@ -1,10 +1,10 @@
-"""
-Configuration settings for the mail service.
-Settings are loaded from environment variables or a .env file.
-"""
-from pydantic_settings import BaseSettings
+import os
+from dotenv import load_dotenv
 
-class Settings(BaseSettings):
+# Load environment variables from .env file if it exists
+load_dotenv()
+
+class Settings:
     """
     Application settings class.
 
@@ -24,13 +24,19 @@ class Settings(BaseSettings):
     SMTP_USER: str
     SMTP_PASS: str
     FROM_EMAIL: str
-
     RABBITMQ_URL: str
     SQLALCHEMY_DATABASE_URI: str
 
-    class Config:
-        """Pydantic configuration."""
-        env_file = ".env"
-        case_sensitive = True
+    def __init__(self):
+        """
+        Initializes the settings by loading values from environment variables.
+        """
+        self.SMTP_HOST = os.environ.get("SMTP_HOST")
+        self.SMTP_PORT = int(os.environ.get("SMTP_PORT", 587))  # Default port if not set
+        self.SMTP_USER = os.environ.get("SMTP_USER")
+        self.SMTP_PASS = os.environ.get("SMTP_PASS")
+        self.FROM_EMAIL = os.environ.get("FROM_EMAIL")
+        self.RABBITMQ_URL = os.environ.get("RABBITMQ_URL")
+        self.SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
 
 settings = Settings()
